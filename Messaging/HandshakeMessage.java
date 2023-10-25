@@ -18,7 +18,7 @@ public class HandshakeMessage {
         return b.array();
     }
 
-    public static synchronized int read(ObjectInputStream in) throws IllegalHeaderException, IOException {
+    public static synchronized int read(ObjectInputStream in) throws IllegalArgumentException, IOException {
         ByteBuffer b = ByteBuffer.allocate(32);
 
         // Read bytes from the input stream
@@ -37,7 +37,7 @@ public class HandshakeMessage {
 
         // Check if the header is valid
         if (!Arrays.equals(header, HEADER)) {
-            throw new IllegalHeaderException("Invalid Header");
+            throw new IllegalArgumentException("Invalid Header");
         }
 
         // Ensure that the position is set correctly before getting the int
@@ -47,11 +47,12 @@ public class HandshakeMessage {
 
         return b.getInt();
     }
-
+/* 
     final class IllegalHeaderException extends IllegalArgumentException {
         public IllegalHeaderException(String message) {
             super(message);
         }
     }
+    */
 }
 

@@ -10,7 +10,7 @@ public class Handshake {
 		void waitFunc();
 	}
 
-	public static synchronized int read(ObjectInputStream in) throws IllegalHeaderException, IOException {
+	public static synchronized int read(ObjectInputStream in) throws IllegalArgumentException, IOException {
 		int id = HandshakeMessage.read(in);
 		return id;
 	}
@@ -54,7 +54,7 @@ public class Handshake {
 				System.out.println("The IDs do not match. Handshake failed.");
 				return false;
 			}
-		} catch (IllegalHeaderException e) {
+		} catch (IllegalArgumentException e) {
 			// Handle the case where an illegal header was received.
 			System.out.println("Illegal Header when attempting to complete handshake");
 			return false;
@@ -67,4 +67,5 @@ public class Handshake {
 		// If we reached this point, it means that the handshake was successful.
 		System.out.println("Handshake successful!");
 		return true;
+}
 }

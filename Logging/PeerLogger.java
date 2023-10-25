@@ -14,43 +14,42 @@ public class PeerLogger {
 
 	public PeerLogger(int peer_id) {
 		// Declare instance variables
-		private FileHandler logFileHandler;
-		private SimpleFormatter formatter;
-		private Logger logger;
-		private int id;
+		FileHandler logFileHandler;
+		LogFormatter formatter;
+		Logger logger;
+		//int id;
 
-		// Constructor for PeerLogger class
-    public PeerLogger(int peer_id) {
-			this.id = peer_id; // Assign the peer_id to the instance variable id
+    
+		this.id = peer_id; // Assign the peer_id to the instance variable id
 
-			// Create a logger with the name "Peer" + id
-			this.logger = Logger.getLogger("Peer" + id);
+		// Create a logger with the name "Peer" + id
+		this.logger = Logger.getLogger("Peer" + id);
 
-			try {
-				// Set the logger level to INFO
-				this.logger.setLevel(Level.INFO);
+		try {
+			// Set the logger level to INFO
+			this.logger.setLevel(Level.INFO);
 
-				// Disable the use of parent handlers
-				this.logger.setUseParentHandlers(false);
+			// Disable the use of parent handlers
+			this.logger.setUseParentHandlers(false);
 
-				// Create a new FileHandler for the log file
-				this.logFileHandler = new FileHandler("log_peer_" + peer_id + ".log");
+			// Create a new FileHandler for the log file
+			this.logFileHandler = new FileHandler("log_peer_" + peer_id + ".log");
 
-				// Create a new SimpleFormatter
-				this.formatter = new SimpleFormatter();
+			// Create a new SimpleFormatter
+			this.formatter = new LogFormatter();
 
-				// Set the formatter for the FileHandler
-				this.logFileHandler.setFormatter(formatter);
+			// Set the formatter for the FileHandler
+			//this.logFileHandler.setFormatter(formatter);
 
-				// Add the FileHandler to the logger
-				this.logger.addHandler(logFileHandler);
-			} catch (Exception e) {
-				e.printStackTrace(); // Print the stack trace for debugging purposes
+			// Add the FileHandler to the logger
+			//this.logger.addHandler(logFileHandler);
+		} catch (Exception e) {
+			e.printStackTrace(); // Print the stack trace for debugging purposes
 
-				// Log an error message indicating that the logger creation failed
-				System.err.println("Failed to create logger for peer " + id);
-			}
+			// Log an error message indicating that the logger creation failed
+			System.err.println("Failed to create logger for peer " + id);
 		}
+		
 	}
 
 	public synchronized void ConnectToLog(int peer_id) {
@@ -67,7 +66,7 @@ public class PeerLogger {
 		s.append("Peer ").append(id).append(" has the preferred neighbors ");
 
 		// String.join for cleaner code
-		s.append(String.join(", ", preferredNeighbors.stream().map(String::valueOf).collect(Collectors.toList())));
+		//s.append(String.join(", ", preferredNeighbors.stream().map(String::valueOf).collect(Collectors.toList())));
 
 		// Add period at the end
 		s.append(".");

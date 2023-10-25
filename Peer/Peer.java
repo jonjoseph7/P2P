@@ -1,5 +1,7 @@
 package Peer;
 
+import Logging.PeerLogger;
+
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Vector;
@@ -24,8 +26,8 @@ public class Peer {
     public boolean chokingTimeout = false;
     public boolean optimisticUnchokeTimeout = false;
 
-    //public PeerLogger logger;
-    //FileManager fileHandler;
+    public PeerLogger logger;
+    FileManager fileHandler;
 
     public static volatile boolean ThreadForceExit = false;
 
@@ -39,7 +41,7 @@ public class Peer {
         this.peerId = peerId;
 
         final var props = PeerConfig.getPeerCommonProps(); // loads Peer properties if not already loaded
-        //bitfield = new Bitfield();
+        bitfield = new Bitfield();
  
         final var neighbors = PeerConfig.getNeighborhoodInfo();
         for (int i = 0; i < neighbors.size(); i++) {
