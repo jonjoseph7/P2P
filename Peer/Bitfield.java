@@ -1,3 +1,5 @@
+package Peer;
+
 import java.util.Vector;
 
 public class Bitfield {
