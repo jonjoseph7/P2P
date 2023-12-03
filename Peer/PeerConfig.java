@@ -127,11 +127,11 @@ public class PeerConfig {
     public static String neighborsToString() {
         var neighbors = getNeighborhoodInfo();
 
-        StringBuffer sbuf = new StringBuffer();
-        for (var nei : neighbors) {
-            sbuf.append(String.format("Peer %d at %s : %d; ", nei.ID, nei.hostname, nei.port));
+        StringBuffer s = new StringBuffer();
+        for (var n : neighbors) {
+            s.append(String.format("Peer %d at %s : %d; ", n.ID, n.hostname, n.port));
         }
 
-        return sbuf.toString();
+        return s.toString();
     }
 }

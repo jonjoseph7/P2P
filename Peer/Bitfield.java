@@ -38,6 +38,7 @@ public class Bitfield {
 			if (bitfield.get(i).equals(false))
 				return false;
 		return true;
+		// return numPiecesDowned == bitfield.size();
 	}
 
 	public synchronized byte[] encode() {

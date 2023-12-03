@@ -1,5 +1,6 @@
 package Peer;
 
-public class RunnerState {
-    
+public enum RunnerState {
+    HANDSHAKE,
+    RECEIVE_MESSAGE,
 }

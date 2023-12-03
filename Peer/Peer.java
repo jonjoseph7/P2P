@@ -1,17 +1,16 @@
 package Peer;
 
-import Logging.PeerLogger;
-
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Vector;
 
+import Logging.PeerLogger;
 
 public class Peer {
 
     int peerId;
     Bitfield bitfield;
-    int peerIndex = -1;
+    int peerIndex = -1; // own index in peer config
 
     volatile Vector<ChokingUpdate> neighborsChokingUpdates = new Vector<>();
     public volatile Vector<Boolean> requestedPieces = new Vector<>();
@@ -42,7 +41,7 @@ public class Peer {
 
         final var props = PeerConfig.getPeerCommonProps(); // loads Peer properties if not already loaded
         bitfield = new Bitfield();
- 
+
         final var neighbors = PeerConfig.getNeighborhoodInfo();
         for (int i = 0; i < neighbors.size(); i++) {
             neighborsChokingUpdates.add(ChokingUpdate.NO_ACTION);
